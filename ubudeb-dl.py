@@ -38,10 +38,12 @@ def upd():
     for item in dependencies_urls:
         if options[1] == 'sourcenames':
             # Pass 'sourcenames' as second argument to function
-            dl_url_list = dependencies.gen_download_url(selected_url, options[1])
+            dl_url_list = dependencies.gen_download_url(item, options[1])
         else:
             # Pass architecture (i386/amd64) as second argument to function
-            dl_url_list = dependencies.gen_download_url(selected_url, options[5])
+            dl_url_list = dependencies.gen_download_url(item, options[5])
+        
+        #print '\n1', dl_url_list
         
         if dl_url_list == 1:
             print 'Something bad happened! This should not have happened.'
@@ -51,7 +53,7 @@ def upd():
             for eachurl in dl_url_list:
                 download_urls.append(eachurl)
     
-    
+    #print '2', download_urls
     # Generate package download script
     f = open('script.sh', 'w')
     f.write('#!/bin/sh\n')
