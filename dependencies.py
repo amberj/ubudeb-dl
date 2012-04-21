@@ -106,7 +106,7 @@ def gen_download_url(url, flag):
         
         flag_slash = '/' + flag + '/'
         for item in dl_urls_temp:
-            if item.find(flag_slash):
+            if item.find(flag_slash) != -1:
                 dl_urls.append(choose_url_mirror(item))
                 #print '**********'
                 return dl_urls
